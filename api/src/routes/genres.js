@@ -23,17 +23,17 @@ router.get('/', async (req, res, next) => {
   }
 })
 
-router.post('/', async (req, res, next) => {
-  try {
-    const { name, id } = req.body
-    const newGenre = await Genre.create({
-      id,
-      name
-    })
-    res.send(newGenre)
-  } catch (error) {
-    next(error)
-  }
-})
+// router.post('/', async (req, res, next) => {
+//   try {
+//     const { name, id } = req.body
+//     const newGenre = await Genre.create({
+//       id,
+//       name
+//     })
+//     res.send(newGenre)
+//   } catch (error) {
+//     next(error)
+//   }
+// })
 
 module.exports = router

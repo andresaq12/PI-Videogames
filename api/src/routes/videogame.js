@@ -1,18 +1,34 @@
+const { default: axios } = require('axios')
 const { Router } = require('express')
 const { Videogame, Genre } = require('../db')
+const { API_KEY } = process.env
 const router = Router()
 
 // ---- GET /videogame/{idVideogame} ---- CHECK
-router.get('/:idVideogame', (req, res, next) => {
+router.get('/:idVideogame', async (req, res, next) => {
   try {
     const { idVideogame } = req.params
-    idVideogame.includes('-') ? console.log('Tiene -') : console.log('No tiene -')
-    return Videogame.findByPk(idVideogame, {
-      attributes: ['name', 'description', 'release_date', 'image', 'rating', 'platforms']
-    })
-      .then(data => {
-        res.send(data)
+    if (idVideogame.includes('-')) {
+      const data = await Videogame.findByPk(idVideogame, {
+        attributes: ['name', 'description', 'release_date', 'image', 'rating', 'platforms']
       })
+      res.send(data)
+    } else {
+      const response = await axios.get(`https://api.rawg.io/api/games/${idVideogame}?key=${API_KEY}`)
+      let { name, background_image, genres, description_raw, released, rating, platforms } = response.data
+      genres = genres.map(item => item.name)
+      platforms = platforms.map(item => item.platform.name)
+      const data = {
+        name,
+        image: background_image,
+        genres,
+        description: description_raw,
+        released,
+        rating,
+        platforms
+      }
+      res.send(data)
+    }
   } catch (error) {
     next(error)
   }
