@@ -1,6 +1,6 @@
+const axios = require('axios')
 const { Router } = require('express')
 const { Genre } = require('../db')
-const axios = require('axios')
 const { API_KEY } = process.env
 const router = Router()
 

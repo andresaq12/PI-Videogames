@@ -1,15 +1,18 @@
+const axios = require('axios')
 const { Router } = require('express')
 const { Op } = require("sequelize")
 const { Videogame, Genre } = require('../db')
+const { API_KEY } = process.env
 const router = Router()
 
-// ---- GET /videogames ---- CHECK
 // ---- GET /videogames?name="..." ---- CHECK
+// ---- GET /videogames ---- CHECK
 router.get('/', async (req, res, next) => {
   try {
     const { name } = req.query
+    //Si pedimos un juego por query
     if (name) {
-      const data = await Videogame.findAll({
+      const data = await Videogame.findAndCountAll({
         where: {
           name: {
             [Op.substring]: name  //buscamos que tenga el name en cualquier parte de su nombre
@@ -22,7 +25,9 @@ router.get('/', async (req, res, next) => {
         res.send(data)
       }
     } else {
-      const data = await Videogame.findAll({
+      //Si pedimos todos los juegos
+      let promiseAPI = axios.get(`https://api.rawg.io/api/games?key=${API_KEY}`)
+      let promiseDB = Videogame.findAll({
         attributes: ['name', 'image'],  //atributos que pido de Videogame
         include: {
           model: Genre, //incluimos datos de Genre
@@ -33,7 +38,14 @@ router.get('/', async (req, res, next) => {
         },
         limit: 15 //limite de 15 datos
       })
-      res.send(data)
+      Promise.all([promiseAPI, promiseDB])
+        .then(response => {
+          const [dataAPI, dataDB] = response
+
+          const final = dataAPI.data.results.slice(0, 1).map(({ name, background_image, genres }) => ({ name, image: background_image, genres }))
+          // const final = [...dataAPI.data.results.slice(0, 1), ...dataDB]
+          res.send(final)
+        }).catch(error => console.log(error))
     }
   } catch (error) {
     next(error)

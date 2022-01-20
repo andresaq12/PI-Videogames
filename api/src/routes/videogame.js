@@ -1,4 +1,4 @@
-const { default: axios } = require('axios')
+const axios = require('axios')
 const { Router } = require('express')
 const { Videogame, Genre } = require('../db')
 const { API_KEY } = process.env
@@ -10,8 +10,16 @@ router.get('/:idVideogame', async (req, res, next) => {
     const { idVideogame } = req.params
     if (idVideogame.includes('-')) {
       const data = await Videogame.findByPk(idVideogame, {
-        attributes: ['name', 'description', 'release_date', 'image', 'rating', 'platforms']
+        attributes: ['name', 'description', 'release_date', 'image', 'rating', 'platforms'],
+        include: {
+          model: Genre, //incluimos datos de Genre
+          attributes: ['name'], //atributo que pido de Genre
+          through: {
+            attributes: []  //indicamos que no queremos ningún dato de videogames_genres, que es la tabla unión
+          }
+        }
       })
+      // data.genres = data.dataValues.genres.map(item => item.name)
       res.send(data)
     } else {
       const response = await axios.get(`https://api.rawg.io/api/games/${idVideogame}?key=${API_KEY}`)
