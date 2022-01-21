@@ -28,7 +28,7 @@ router.get('/', async (req, res, next) => {
       //Si pedimos todos los juegos
       let promiseAPI = axios.get(`https://api.rawg.io/api/games?key=${API_KEY}`)
       let promiseDB = Videogame.findAll({
-        attributes: ['name', 'image'],  //atributos que pido de Videogame
+        attributes: ['id', 'name', 'image'],  //atributos que pido de Videogame
         include: {
           model: Genre, //incluimos datos de Genre
           attributes: ['name'], //atributo que pido de Genre
@@ -41,10 +41,13 @@ router.get('/', async (req, res, next) => {
       Promise.all([promiseAPI, promiseDB])
         .then(response => {
           const [dataAPI, dataDB] = response
-
-          const final = dataAPI.data.results.slice(0, 1).map(({ name, background_image, genres }) => ({ name, image: background_image, genres }))
-          // const final = [...dataAPI.data.results.slice(0, 1), ...dataDB]
-          res.send(final)
+          const selectDataAPI = dataAPI.data.results.map(({ id, name, background_image, genres }) => ({ id, name, image: background_image, genres: genres.map(({ name }) => ({ name })) }))
+          const joinData = [...dataDB, ...selectDataAPI]
+          console.log('Size dataAPI: ', dataAPI.data.results.length)
+          console.log('Size joinData: ', joinData.length)
+          res.send(joinData)
+          // console.log(dataAPI.data.results.length)
+          // res.send(dataAPI.data)
         }).catch(error => console.log(error))
     }
   } catch (error) {

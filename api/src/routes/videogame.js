@@ -45,11 +45,12 @@ router.get('/:idVideogame', async (req, res, next) => {
 // ---- POST / videogame ---- CHECK
 router.post('/', async (req, res, next) => {
   try {
-    const { name, description, release_date, rating, platforms, genres } = req.body
+    const { name, description, release_date, image, rating, platforms, genres } = req.body
     const newVideogame = await Videogame.create({
       name,
       description,
       release_date,
+      image,
       rating,
       platforms
     })
