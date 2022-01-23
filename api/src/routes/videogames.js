@@ -16,18 +16,26 @@ router.get('/', async (req, res, next) => {
       let promiseDB = Videogame.findAll({
         where: {
           name: {
-            [Op.substring]: name  //buscamos que tenga el name en cualquier parte de su nombre
+            [Op.iLike]: `%${name}%`  //buscamos que tenga el name en cualquier parte de su nombre, no importa mayúsculas ni minísculas
           }
         },
+        order: [
+          ['name', 'ASC'],
+        ],
         limit: 15
       })
       Promise.all([promiseAPI, promiseDB])
         .then(response => {
           const [dataAPI, dataDB] = response
-          console.log('DATA API:', dataAPI)
           console.log('DATA DB: ', dataDB)
           if (dataAPI.data.length === 0 && dataDB.length === 0) res.send('Ninguna coincidencia')
-          const selectDataAPI = dataAPI.data.results.map(({ id, name, background_image, genres }) => ({ id, name, image: background_image, genres: genres.map(({ name }) => ({ name })) }))
+          const selectDataAPI = dataAPI.data.results.map(({ id, name, background_image, genres }) => ({
+            id,
+            name,
+            image: background_image,
+            genres: genres.map(({ name }) => ({ name }))
+          })
+          )
           const joinData = [...dataDB, ...selectDataAPI]
           res.send(joinData)
         }).catch(error => console.log(error))
