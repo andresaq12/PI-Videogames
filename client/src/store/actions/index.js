@@ -1,11 +1,5 @@
 import axios from 'axios'
 
-// export const fetch_videogames = () => {
-//   return {
-//     type: 'FETCH_VIDEOGAMES'
-//   }
-// }
-
 export const fetchVideogames = () => {
   return dispatch => {
     axios.get(`http://localhost:3001/videogames`)
@@ -14,9 +8,29 @@ export const fetchVideogames = () => {
           type: 'FETCH_VIDEOGAMES',
           payload: videogames.data
         })
-      })
-      .catch((error) => {
+      }).catch((error) => {
         console.log(error)
       })
+  }
+}
+
+export const searchVideogames = (search) => {
+  return dispatch => {
+    axios.get(`http://localhost:3001/videogames?name=${search}`)
+      .then(videogames => {
+        dispatch({
+          type: 'SEARCH_VIDEOGAMES',
+          payload: videogames.data
+        })
+      }).catch((error) => {
+        console.log(error)
+      })
+  }
+}
+
+export const sortVideogames = (sortType) => {
+  return {
+    type: 'SORT',
+    payload: sortType
   }
 }

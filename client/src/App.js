@@ -1,11 +1,18 @@
+import { Routes, Route } from 'react-router';
 import './App.css';
-import Videogames from './components/videogames'
+import Order from './components/order/order';
+import SearchBar from './components/searchBar/searchBar';
+import VideogameDetail from './components/videogameDetail/videogameDetail';
+import Videogames from './components/videogames/videogames'
 
 function App() {
   return (
     <div className="App">
-      <h1>Henry Videogames</h1>
-      <Videogames />
+      <Routes>
+        <Route path='/' element={[<SearchBar />, <Order />, <Videogames />]} />
+        <Route path='/:id' element={<VideogameDetail />}>
+        </Route>
+      </Routes>
     </div>
   );
 }

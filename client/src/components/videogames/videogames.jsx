@@ -1,13 +1,16 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchVideogames } from '../store/actions/index'
-import Videogame from './videogame';
+import Videogame from '../videogame/videogame'
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchVideogames } from '../../store/actions/index'
+
 
 const Videogames = () => {
 
-  const videogames = useSelector(state => state.videogames)
+  const videogames = useSelector(state => state.filteredVideogames)
   const dispatch = useDispatch()
+
   console.log(videogames)
+
   useEffect(() => {
     dispatch(fetchVideogames())
   }, [])

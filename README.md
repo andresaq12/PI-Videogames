@@ -98,7 +98,7 @@ __Pagina inicial__: deben armar una landing page con
 - [ ] Botón para ingresar al home (`Ruta principal`)
 
 __Ruta principal__: debe contener
-- [ ] Input de búsqueda para encontrar videojuegos por nombre
+- [:heavy_check_mark:] Input de búsqueda para encontrar videojuegos por nombre
 - [ ] Área donde se verá el listado de videojuegos. Deberá mostrar su:
   - Imagen
   - Nombre
