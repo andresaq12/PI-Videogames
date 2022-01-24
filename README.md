@@ -86,8 +86,8 @@ __IMPORTANTE__: No se permitirá utilizar librerías externas para aplicar estil
 #### Tecnologías necesarias:
 - [ ] React
 - [ ] Redux
-- [ ] Express
-- [ ] Sequelize - Postgres
+- [:heavy_check_mark:] Express
+- [:heavy_check_mark:] Sequelize - Postgres
 
 #### Frontend
 
@@ -132,14 +132,14 @@ __Ruta de creación de videojuegos__: debe contener
 
 El modelo de la base de datos deberá tener las siguientes entidades (Aquellas propiedades marcadas con asterísco deben ser obligatorias):
 
-- [ ] Videojuego con las siguientes propiedades:
+- [:heavy_check_mark:] Videojuego con las siguientes propiedades:
   - ID: * No puede ser un ID de un videojuego ya existente en la API rawg
   - Nombre *
   - Descripción *
   - Fecha de lanzamiento
   - Rating
   - Plataformas *
-- [ ] Genero con las siguientes propiedades:
+- [:heavy_check_mark:] Genero con las siguientes propiedades:
   - ID
   - Nombre
 
