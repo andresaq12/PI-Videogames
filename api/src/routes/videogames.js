@@ -57,7 +57,7 @@ router.get('/', async (req, res, next) => {
       Promise.all([promiseAPI, promiseDB])
         .then(response => {
           const [dataAPI, dataDB] = response
-          const selectDataAPI = dataAPI.data.results.map(({ id, name, background_image, rating, genres }) => ({ id, name, image: background_image, rating, genres: genres.map(({ name }) => ({ name })) }))
+          const selectDataAPI = dataAPI.data.results.map(({ id, name, background_image, rating, genres }) => ({ id, name, image: background_image, rating, genres: genres.map(({ id, name }) => ({ id, name })) }))
           const joinData = [...dataDB, ...selectDataAPI]
           // console.log('Size dataAPI: ', dataAPI.data.results.length)
           // console.log('Size joinData: ', joinData.length)

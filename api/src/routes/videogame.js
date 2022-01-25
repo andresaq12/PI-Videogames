@@ -24,14 +24,14 @@ router.get('/:idVideogame', async (req, res, next) => {
     } else {
       const response = await axios.get(`https://api.rawg.io/api/games/${idVideogame}?key=${API_KEY}`)
       let { name, background_image, genres, description_raw, released, rating, platforms } = response.data
-      genres = genres.map(item => item.name)
+      genres = genres.map(item => ({ 'name': item.name }))
       platforms = platforms.map(item => item.platform.name)
       const data = {
         name,
         image: background_image,
         genres,
         description: description_raw,
-        released,
+        released_date: released,
         rating,
         platforms
       }

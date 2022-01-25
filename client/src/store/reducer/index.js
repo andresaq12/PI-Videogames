@@ -29,7 +29,7 @@ const appReducer = (state = initialState, action) => {
       if (action.payload === 'selecciona') return {
         ...state
       }
-      let genreVideogames = state.videogames.filter(item => item.genres.map(data => data.name).includes(action.payload))
+      let genreVideogames = state.videogames.filter(item => item.genres.map(data => data.id).includes(action.payload))
       return {
         ...state,
         filteredVideogames: genreVideogames
@@ -50,7 +50,7 @@ const appReducer = (state = initialState, action) => {
       })
       return {
         ...state,
-        filteredVideogames: orderedVideogames
+        filteredVideogames: state.videogames
       }
     case 'RATING':
       if (action.payload === 'selecciona') return {
@@ -69,6 +69,25 @@ const appReducer = (state = initialState, action) => {
       return {
         ...state,
         filteredVideogames: ratingVideogames
+      }
+    case 'SELECT_TYPE':
+      if (action.payload === 'all') return {
+        ...state,
+        filteredVideogames: state.filteredVideogames
+      }
+      let typeVideogames = []
+      if (action.payload === 'api') {
+        typeVideogames = state.videogames.filter(item => typeof (item.id) === 'number')
+        return {
+          ...state,
+          filteredVideogames: typeVideogames
+        }
+      } else {
+        typeVideogames = state.videogames.filter(item => typeof (item.id) === 'string')
+        return {
+          ...state,
+          filteredVideogames: typeVideogames
+        }
       }
     default:
       return {

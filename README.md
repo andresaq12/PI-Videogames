@@ -95,26 +95,26 @@ Se debe desarrollar una aplicación de React/Redux que contenga las siguientes p
 
 __Pagina inicial__: deben armar una landing page con
 - [ ] Alguna imagen de fondo representativa al proyecto
-- [ ] Botón para ingresar al home (`Ruta principal`)
+- [:heavy_check_mark:] Botón para ingresar al home (`Ruta principal`)
 
 __Ruta principal__: debe contener
 - [:heavy_check_mark:] Input de búsqueda para encontrar videojuegos por nombre
-- [ ] Área donde se verá el listado de videojuegos. Deberá mostrar su:
+- [:heavy_check_mark:] Área donde se verá el listado de videojuegos. Deberá mostrar su:
   - Imagen
   - Nombre
   - Géneros
-- [ ] Botones/Opciones para filtrar por género y por videojuego existente o agregado por nosotros
+- [:heavy_check_mark:] Botones/Opciones para filtrar por género y por videojuego existente o agregado por nosotros
 - [:heavy_check_mark:] Botones/Opciones para ordenar tanto ascendentemente como descendentemente los videojuegos por orden alfabético y por rating
 - [ ] Paginado para ir buscando y mostrando los siguientes videojuegos, 15 juegos por pagina, mostrando los primeros 15 en la primer pagina.
 
 __IMPORTANTE__: Dentro de la Ruta Principal se deben mostrar tanto los videjuegos traidos desde la API como así también los de la base de datos. Debido a que en la API existen alrededor de 500 mil juegos, por cuestiones de performance pueden tomar la simplificación de obtener y paginar los primeras 100.
 
 __Ruta de detalle de videojuego__: debe contener
-- [ ] Los campos mostrados en la ruta principal para cada videojuegos (imagen, nombre, y géneros)
-- [ ] Descripción
-- [ ] Fecha de lanzamiento
-- [ ] Rating
-- [ ] Plataformas
+- [:heavy_check_mark:] Los campos mostrados en la ruta principal para cada videojuegos (imagen, nombre, y géneros)
+- [:heavy_check_mark:] Descripción
+- [:heavy_check_mark:] Fecha de lanzamiento
+- [:heavy_check_mark:] Rating
+- [:heavy_check_mark:] Plataformas
 
 __Ruta de creación de videojuegos__: debe contener
 - [ ] Un formulario __controlado con JavaScript__ con los siguientes campos:

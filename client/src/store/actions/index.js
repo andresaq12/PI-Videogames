@@ -34,10 +34,10 @@ export const fetchGenres = () => {
       .then(genres => {
         dispatch({
           type: 'FETCH_GENRES',
-          payload: genres
-        }).catch((error) => {
-          console.log(error)
+          payload: genres.data
         })
+      }).catch((error) => {
+        console.log(error)
       })
   }
 }
@@ -56,9 +56,16 @@ export const ratingVideogames = (sortType) => {
   }
 }
 
-export const selectGenre = (selectType) => {
+export const selectGenre = (genreID) => {
   return {
     type: 'SELECT_GENRE',
-    payload: selectType
+    payload: Number(genreID)
+  }
+}
+
+export const selectType = (search) => {
+  return {
+    type: 'SELECT_TYPE',
+    payload: search
   }
 }
