@@ -1,7 +1,8 @@
 const initialState = {
   videogames: [],
   filteredVideogames: [],
-  videogameDetail: {}
+  videogameDetail: {},
+  genres: []
 }
 
 const appReducer = (state = initialState, action) => {
@@ -18,6 +19,20 @@ const appReducer = (state = initialState, action) => {
         ...state,
         videogames: action.payload,
         filteredVideogames: action.payload
+      }
+    case 'FETCH_GENRES':
+      return {
+        ...state,
+        genres: action.payload
+      }
+    case 'SELECT_GENRE':
+      if (action.payload === 'selecciona') return {
+        ...state
+      }
+      let genreVideogames = state.videogames.filter(item => item.genres.map(data => data.name).includes(action.payload))
+      return {
+        ...state,
+        filteredVideogames: genreVideogames
       }
     case 'SORT':
       if (action.payload === 'Selecciona') return {

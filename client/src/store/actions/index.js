@@ -28,6 +28,20 @@ export const searchVideogames = (search) => {
   }
 }
 
+export const fetchGenres = () => {
+  return dispatch => {
+    axios.get(`http://localhost:3001/genres`)
+      .then(genres => {
+        dispatch({
+          type: 'FETCH_GENRES',
+          payload: genres
+        }).catch((error) => {
+          console.log(error)
+        })
+      })
+  }
+}
+
 export const sortVideogames = (sortType) => {
   return {
     type: 'SORT',
@@ -39,5 +53,12 @@ export const ratingVideogames = (sortType) => {
   return {
     type: 'RATING',
     payload: sortType
+  }
+}
+
+export const selectGenre = (selectType) => {
+  return {
+    type: 'SELECT_GENRE',
+    payload: selectType
   }
 }
