@@ -4,7 +4,7 @@ const ButtonIntro = () => {
   return (
     <div>
       <Link to='/home'>
-        <button type="button">Ingrese</button>
+        <button type="button" on>Ingrese</button>
       </Link>
     </div>
   )
