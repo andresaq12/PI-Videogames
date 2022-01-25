@@ -18,7 +18,7 @@ module.exports = (sequelize) => {
       type: DataTypes.TEXT,
       allowNull: false
     },
-    release_date: {
+    released: {
       type: DataTypes.STRING
     },
     image: {

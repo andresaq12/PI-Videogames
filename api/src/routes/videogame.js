@@ -10,7 +10,7 @@ router.get('/:idVideogame', async (req, res, next) => {
     const { idVideogame } = req.params
     if (idVideogame.includes('-')) {
       const data = await Videogame.findByPk(idVideogame, {
-        attributes: ['name', 'description', 'release_date', 'image', 'rating', 'platforms'],
+        attributes: ['name', 'description', 'released', 'image', 'rating', 'platforms'],
         include: {
           model: Genre, //incluimos datos de Genre
           attributes: ['name'], //atributo que pido de Genre
@@ -31,7 +31,7 @@ router.get('/:idVideogame', async (req, res, next) => {
         image: background_image,
         genres,
         description: description_raw,
-        released_date: released,
+        released,
         rating,
         platforms
       }

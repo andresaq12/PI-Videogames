@@ -28,7 +28,7 @@ const VideogameDetail = () => {
             <h2>Description:</h2>
             <p>{videogame.description}</p>
             <h2>Released:</h2>
-            <p>{videogame.released_date}</p>
+            <p>{videogame.released}</p>
             <h3>Rating: {videogame.rating}</h3>
             <h3>Platforms:</h3>
             {
