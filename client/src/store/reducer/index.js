@@ -37,6 +37,24 @@ const appReducer = (state = initialState, action) => {
         ...state,
         filteredVideogames: orderedVideogames
       }
+    case 'RATING':
+      if (action.payload === 'selecciona') return {
+        ...state
+      }
+      let ratingVideogames = [...state.videogames]
+      ratingVideogames = ratingVideogames.sort((a, b) => {
+        if (a.rating > b.rating) {
+          return action.payload === 'ratingUp' ? 1 : -1
+        }
+        if (a.rating < b.rating) {
+          return action.payload === 'ratingUp' ? -1 : 1
+        }
+        return 0
+      })
+      return {
+        ...state,
+        filteredVideogames: ratingVideogames
+      }
     default:
       return {
         ...state

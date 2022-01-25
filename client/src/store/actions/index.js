@@ -34,3 +34,10 @@ export const sortVideogames = (sortType) => {
     payload: sortType
   }
 }
+
+export const ratingVideogames = (sortType) => {
+  return {
+    type: 'RATING',
+    payload: sortType
+  }
+}

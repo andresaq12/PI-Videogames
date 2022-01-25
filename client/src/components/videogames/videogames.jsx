@@ -18,7 +18,7 @@ const Videogames = () => {
   return (
     <>
       {videogames.map(videogame =>
-        <Videogame key={videogame.id} name={videogame.name} image={videogame.image} />
+        <Videogame key={videogame.id} name={videogame.name} image={videogame.image} rating={videogame.rating} />
       )}
     </>
   )
