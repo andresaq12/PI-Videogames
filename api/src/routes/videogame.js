@@ -45,17 +45,20 @@ router.get('/:idVideogame', async (req, res, next) => {
 // ---- POST / videogame ---- CHECK
 router.post('/', async (req, res, next) => {
   try {
-    const { name, description, release_date, image, rating, platforms, genres } = req.body
+    const { name, description, released, image, rating, platforms, genres } = req.body
+    console.log(req.body)
     const newVideogame = await Videogame.create({
       name,
       description,
-      release_date,
+      released,
       image,
       rating,
       platforms
     })
+    console.log(genres)
     for (let i = 0; i < genres.length; i++) {
       let genre = await Genre.findByPk(genres[i])
+      console.log(genre)
       await genre.addVideogame(newVideogame.id)
     }
     res.send(newVideogame)

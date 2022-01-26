@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { searchVideogames } from '../../store/actions'
 
 const SearchBar = () => {
@@ -21,6 +22,7 @@ const SearchBar = () => {
       <form onSubmit={handleSubmit}>
         <input type='text' placeholder='Videojuego...' onChange={handleInputChange} />
         <input type='submit' value='Buscar' />
+        <Link to='/add'>Ir a Agregar</Link>
       </form>
     </div>
   )
