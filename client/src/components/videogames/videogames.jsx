@@ -1,15 +1,11 @@
 import Videogame from '../videogame/videogame'
 import { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { connect, useDispatch } from 'react-redux'
 import { fetchVideogames } from '../../store/actions/index'
 
 
-const Videogames = () => {
-
-  const videogames = useSelector(state => state.filteredVideogames)
+const Videogames = ({ videogames }) => {
   const dispatch = useDispatch()
-
-  console.log(videogames)
 
   useEffect(() => {
     dispatch(fetchVideogames())
@@ -24,4 +20,10 @@ const Videogames = () => {
   )
 }
 
-export default Videogames
+const mapStateToProps = (state) => {
+  return {
+    videogames: state.filteredVideogames
+  }
+}
+
+export default connect(mapStateToProps)(Videogames)

@@ -84,8 +84,8 @@ A continuación se detallaran los requerimientos mínimos para la aprobación de
 __IMPORTANTE__: No se permitirá utilizar librerías externas para aplicar estilos a la aplicación. Tendrán que utilizar CSS con algunas de las opciones que vimos en dicha clase (CSS puro, CSS Modules o Styled Components)
 
 #### Tecnologías necesarias:
-- [ ] React
-- [ ] Redux
+- [:heavy_check_mark:] React
+- [:heavy_check_mark:] Redux
 - [:heavy_check_mark:] Express
 - [:heavy_check_mark:] Sequelize - Postgres
 
@@ -117,14 +117,14 @@ __Ruta de detalle de videojuego__: debe contener
 - [:heavy_check_mark:] Plataformas
 
 __Ruta de creación de videojuegos__: debe contener
-- [ ] Un formulario __controlado con JavaScript__ con los siguientes campos:
+- [:heavy_check_mark:] Un formulario __controlado con JavaScript__ con los siguientes campos:
   - Nombre
   - Descripción
   - Fecha de lanzamiento
   - Rating
-- [ ] Posibilidad de seleccionar/agregar varios géneros
-- [ ] Posibilidad de seleccionar/agregar varias plataformas
-- [ ] Botón/Opción para crear un nuevo videojuego
+- [:heavy_check_mark:] Posibilidad de seleccionar/agregar varios géneros
+- [:heavy_check_mark:] Posibilidad de seleccionar/agregar varias plataformas
+- [] Botón/Opción para crear un nuevo videojuego
 
 > Es requisito que el formulario de creación esté validado con JavaScript y no sólo con validaciones HTML. Pueden agregar las validaciones que consideren. Por ejemplo: Que el nombre del juego no pueda contener algunos símbolos, que el rating no pueda exceder determinado valor, etc.
 
