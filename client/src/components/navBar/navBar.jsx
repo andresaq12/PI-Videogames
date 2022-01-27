@@ -1,16 +1,21 @@
-import { Link } from 'react-router-dom'
+import { Link, Outlet } from 'react-router-dom'
 
 const NavBar = () => {
 
   return (
-    <nav>
-      <Link to='/home'>
-        <span>Home</span>
-      </Link>
-      <Link to='/add'>
-        <span>Add Videogame</span>
-      </Link>
-    </nav>
+    <main>
+      <nav>
+        <Link to='/home'>
+          <span>Home</span>
+        </Link>
+        <Link to='/game/add'>
+          <span>Add Videogame</span>
+        </Link>
+      </nav>
+      <section>
+        <Outlet />
+      </section>
+    </main>
   )
 }
 

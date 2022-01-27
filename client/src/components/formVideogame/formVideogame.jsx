@@ -51,9 +51,6 @@ const FormVideogame = ({ genres }) => {
 
   return (
     <div>
-      <div>
-        <Link to='/home'>Ir a Home</Link>
-      </div>
       <form onSubmit={handleSubmit}>
         <label htmlFor=''>Name:</label>
         <input onChange={handleInputChange} name="name" type='text' />

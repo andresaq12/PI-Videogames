@@ -5,7 +5,6 @@ import { connect } from 'react-redux'
 
 const GenreFilter = ({ genres }) => {
   const dispatch = useDispatch()
-  console.log(genres)
 
   const handleChange = (e) => {
     dispatch(selectGenre(e.target.value))

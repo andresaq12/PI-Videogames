@@ -22,7 +22,6 @@ const SearchBar = () => {
       <form onSubmit={handleSubmit}>
         <input type='text' placeholder='Videojuego...' onChange={handleInputChange} />
         <input type='submit' value='Buscar' />
-        <Link to='/add'>Ir a Agregar</Link>
       </form>
     </div>
   )
