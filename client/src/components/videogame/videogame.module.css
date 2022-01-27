@@ -1,0 +1,49 @@
+.card {
+  width: 150px;
+  position: relative;
+  height: 170px;
+  background-color: gray;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+  margin-bottom: 25px;
+}
+
+.textBox {
+  position: relative;
+  text-align: center;
+  border-radius: 20px;
+  height: 50px;
+}
+
+.rating {
+ position: absolute;
+  left: 5px;
+  font-size: 10px;
+  padding: 10px 0px 0px 0px;
+  margin: 0;
+}
+
+.name {
+  padding: 30px 10px 0px 10px;
+  text-align: center;
+  font-size: 15px;
+  margin: 0;
+  font-weight: bold;
+}
+
+.name:hover {
+  color: blue;
+}
+
+
+
+.imgBox{
+  position: absolute;
+  height: 84.375px;
+  bottom: 0;
+  border-radius: 0px 0px 15px 15px;
+}
+
+img {
+  border-radius: 0px 0px 15px 15px;
+}
