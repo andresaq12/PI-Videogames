@@ -8,14 +8,14 @@ const Videogame = ({ id, name, image, rating }) => {
         <p className={styles.rating}>{rating}</p>
         <div>
           <p className={styles.name}>
-            <Link to={'/game/' + id}>{name}</Link>
+            <Link to={'/game/' + id} style={{ textDecoration: 'none' }}>{name}</Link>
           </p>
         </div>
       </div >
       <div className={styles.imgBox} >
         <img src={image} alt={name} width='150' />
       </div>
-    </div>
+    </div >
   )
 }
 

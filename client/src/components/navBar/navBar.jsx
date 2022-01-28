@@ -1,21 +1,23 @@
 import { Link, Outlet } from 'react-router-dom'
+import styles from '../navBar/navBar.module.css'
 
 const NavBar = () => {
 
   return (
-    <main>
-      <nav>
-        <Link to='/home'>
-          <span>Home</span>
-        </Link>
-        <Link to='/game/add'>
-          <span>Add Videogame</span>
-        </Link>
+    <>
+      <nav className={styles.topnav}>
+        <div className={styles.container}>
+          <ul>
+            <li>
+              <Link to='/home' style={{ textDecoration: 'none' }}> Home</Link>
+            </li>
+            <li>
+              <Link to='/game/add' style={{ textDecoration: 'none' }}>Add Videogame</Link>
+            </li>
+          </ul>
+        </div>
       </nav>
-      <section>
-        <Outlet />
-      </section>
-    </main>
+    </ >
   )
 }
 

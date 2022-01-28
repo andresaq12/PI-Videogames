@@ -16,7 +16,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route path='/' element={<ButtonIntro />} />
-        <Route path='/home' element={[<NavBar />, <SearchBar />, <Order />, <Rating />, <GenreFilter />, <TypeFilter />, <Videogames />]} />
+        <Route path='/home' element={<Videogames />} />
         <Route path='/game/:id' element={[<NavBar />, <VideogameDetail />]} />
         <Route path='/game/add' element={[<NavBar />, <FormVideogame />]} />
         <Route path='*' element={<Navigate replace to='/home' />} />
