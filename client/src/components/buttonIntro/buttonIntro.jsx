@@ -1,12 +1,12 @@
-import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import '../buttonIntro/buttonIntro.css'
 
 const ButtonIntro = () => {
 
   return (
-    <div>
+    <div className='intro'>
       <Link to='/home'>
-        <button type="button">Ingrese</button>
+        <button className='introButton' type="button">Ingrese</button>
       </Link>
     </div>
   )

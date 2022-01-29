@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { Link } from 'react-router-dom'
 import { searchVideogames } from '../../store/actions'
+import styles from '../searchBar/searchBar.css'
 
 const SearchBar = () => {
   const [search, setSearch] = useState('')
@@ -21,7 +21,7 @@ const SearchBar = () => {
     <div>
       <form onSubmit={handleSubmit}>
         <input type='text' placeholder='Videojuego...' onChange={handleInputChange} />
-        <input type='submit' value='Buscar' />
+        <button className={styles.button} type='submit' value='Buscar'>Buscar</button>
       </form>
     </div>
   )

@@ -1,19 +1,19 @@
 import { Link } from 'react-router-dom'
-import styles from '../videogame/videogame.module.css'
+import '../videogame/videogame.css'
 
 const Videogame = ({ id, name, image, rating }) => {
   return (
-    <div className={styles.card}>
-      <div className={styles.textBox}>
-        <p className={styles.rating}>{rating}</p>
+    <div className='card'>
+      <div className='textBox'>
+        <p className='rating'>{rating}</p>
         <div>
-          <p className={styles.name}>
-            <Link to={'/game/' + id} style={{ textDecoration: 'none' }}>{name}</Link>
+          <p className='name'>
+            <Link to={'/game/' + id} className='nameLink' style={{ textDecoration: 'none' }}>{name}</Link>
           </p>
         </div>
       </div >
-      <div className={styles.imgBox} >
-        <img src={image} alt={name} width='150' />
+      <div className='imgBox'>
+        <img src={image} alt={name} width='150' height='84.375' />
       </div>
     </div >
   )

@@ -7,7 +7,7 @@ import Rating from '../rating/rating'
 import { useEffect } from 'react'
 import { connect, useDispatch } from 'react-redux'
 import { fetchVideogames } from '../../store/actions/index'
-import styles from '../videogames/videogames.module.css'
+import '../videogames/videogames.css'
 
 const Videogames = ({ videogames }) => {
   const dispatch = useDispatch()
@@ -17,20 +17,28 @@ const Videogames = ({ videogames }) => {
   }, [])
 
   return (
-    <div>
-      <NavBar />
-      <div className='filters'>
-        <GenreFilter />
-        <Order />
-        <TypeFilter />
-        <Rating />
-      </div>
-      <div className={styles.cards}>
-        {videogames.map(videogame =>
-          <Videogame key={videogame.id} name={videogame.name} image={videogame.image} rating={videogame.rating} id={videogame.id} />
-        )}
-      </div>
-    </div>
+    <>
+      {
+        videogames.length >= 1 &&
+        <>
+          <NavBar />
+          <div className='filters'>
+            <GenreFilter />
+            <Order />
+            <TypeFilter />
+            <Rating />
+            <div className='pages'>
+              BOTONES PÁGINAS
+            </div>
+          </div>
+          <div className='cards'>
+            {videogames.map(videogame =>
+              <Videogame key={videogame.id} name={videogame.name} image={videogame.image} rating={videogame.rating} id={videogame.id} />
+            )}
+          </div>
+        </>
+      }
+    </>
   )
 }
 
