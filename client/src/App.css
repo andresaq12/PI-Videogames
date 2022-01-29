@@ -1,8 +1,12 @@
-/* .App {
-  text-align: center;
+.App {
+  background-image: url('https://www.pixelstalk.net/wp-content/uploads/2016/03/Dark-Wallpaper-Desktop-Background-1B6.jpg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  background-attachment: fixed;
 }
 
-.App-logo {
+/* .App-logo {
   height: 40vmin;
   pointer-events: none;
 }

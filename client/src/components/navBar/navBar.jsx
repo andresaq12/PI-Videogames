@@ -1,20 +1,22 @@
-import { Link, Outlet } from 'react-router-dom'
-import styles from '../navBar/navBar.module.css'
+import { Link } from 'react-router-dom'
+import SearchBar from '../searchBar/searchBar'
+import '../navBar/navBar.css'
 
 const NavBar = () => {
 
   return (
     <header>
-      <nav className={styles.topnav}>
-        <ul>
-          <li>
-            <Link to='/home' className={styles.link}> Home</Link>
+      <nav className='nav'>
+        <ul className='navLinks'>
+          <li className='navItem'>
+            <Link to='/home' className='textlink'>Home</Link>
           </li>
-          <li>
-            <Link to='/game/add'>Add Videogame</Link>
+          <li className='navItem' >
+            <Link to='/game/add' className='textlink'>Add Videogame</Link>
           </li>
         </ul>
       </nav>
+      <SearchBar />
     </header >
   )
 }

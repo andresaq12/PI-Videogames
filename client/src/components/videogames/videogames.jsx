@@ -1,6 +1,5 @@
 import Videogame from '../videogame/videogame'
 import NavBar from '../navBar/navBar'
-import SearchBar from '../searchBar/searchBar'
 import GenreFilter from '../genreFilter/genreFilter'
 import TypeFilter from '../typeFilter/typeFilter'
 import Order from '../order/order'
@@ -20,9 +19,6 @@ const Videogames = ({ videogames }) => {
   return (
     <div>
       <NavBar />
-      <div className='search'>
-        <SearchBar />
-      </div>
       <div className='filters'>
         <GenreFilter />
         <Order />
