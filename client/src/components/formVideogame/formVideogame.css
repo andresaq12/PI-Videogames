@@ -1,0 +1,46 @@
+.gameForm {
+  color: white;
+  border: 1px solid blanchedalmond;
+  position: relative;
+  top: 100px;
+  width: 25%;
+  text-align: center;
+  font-size: 8px;
+  margin: auto;
+  padding: 20px;
+  border-radius: 15px;
+  backdrop-filter: blur(5px);
+}
+
+label {
+  font-size: 9px;
+}
+
+.gameForm input[type=text], select {
+  padding: 8px 10px;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+}
+
+.gameForm input[type=text] {
+  font-size: 10px;
+  width: 220px;
+  height: 4px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+textarea {
+  width: 214px;
+  font-size: 10px;
+  font-family: 'Montserrat', sans-serif;
+  resize:vertical;
+  margin-top: 6px;
+  margin-bottom: 16px;
+}
+
+.gameForm p {
+  font-size: 12px;
+  font-weight: bold;
+}

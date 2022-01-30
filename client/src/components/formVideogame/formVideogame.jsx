@@ -1,7 +1,8 @@
+import NavBar from '../navBar/navBar'
 import { useState } from "react"
-import axios from 'axios'
 import { connect } from 'react-redux'
-import { Link } from "react-router-dom"
+import axios from 'axios'
+import '../formVideogame/formVideogame.css'
 
 const FormVideogame = ({ genres }) => {
   const [videogame, setVideogame] = useState({ genres: [], platforms: [] })
@@ -50,44 +51,48 @@ const FormVideogame = ({ genres }) => {
   }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor=''>Name:</label>
-        <input onChange={handleInputChange} name="name" type='text' />
-        <label htmlFor=''>Description:</label>
-        <input onChange={handleInputChange} name="description" type='text' />
-        <label htmlFor=''>Image:</label>
-        <input onChange={handleInputChange} name="image" type='text' />
-        <label htmlFor=''>Released Date:</label>
-        <input onChange={handleInputChange} name="released" type='text' />
-        <label htmlFor=''>Rating:</label>
-        <input onChange={handleInputChange} name="rating" type='text' />
-        <label htmlFor=''>Genres:</label>
-        <select name='genres' onChange={handleGenreChange}>
-          <option value='select'>Select</option>
-          {genres.map(data =>
-            <option key={data.id} value={data.id}>{data.name}</option>
-          )}
-        </select>
-        {
-          videogame.genres.length > 0 ? videogame.genres.map(item => {
-            let data = genres.find(element => element.id === item)
-            return <p>{data.name}</p>
-          }) : <></>
-        }
-        <label htmlFor=''>Platforms:</label>
-        <select name='platforms' onChange={handlePlatformChange}>
-          <option value='select2'>Select</option>
-          {platform.map(data =>
-            <option key={data} value={data}>{data}</option>
-          )}
-        </select>
-        {
-          videogame.platforms.length > 0 ? videogame.platforms.map(item => <p>{item}</p>) : <></>
-        }
-        <input type='submit' />
-      </form>
-    </div>
+    <>
+      <NavBar />
+      <div className='gameForm'>
+        <p>Add Videogame</p>
+        <form onSubmit={handleSubmit} autoComplete='off' >
+          {/* <label htmlFor=''>Name:</label> */}
+          <input onChange={handleInputChange} name="name" type='text' placeholder='Name' />
+          {/* <label htmlFor=''>Image:</label> */}
+          <input onChange={handleInputChange} name="image" placeholder='Image' type='text' />
+          {/* <label htmlFor=''>Released Date:</label> */}
+          <input onChange={handleInputChange} name="released" placeholder='Released (YYYY-MM-DD)' type='text' />
+          {/* <label htmlFor=''>Rating:</label> */}
+          <input onChange={handleInputChange} name="rating" placeholder='Rating' type='text' />
+          {/* <label htmlFor=''>Description:</label> */}
+          <textarea id='description' onChange={handleInputChange} name="description" placeholder='  Write a description...' />
+          <label htmlFor=''>Genres:</label>
+          <select name='genres' onChange={handleGenreChange}>
+            <option value='select'>Select</option>
+            {genres.map(data =>
+              <option key={data.id} value={data.id}>{data.name}</option>
+            )}
+          </select>
+          {
+            videogame.genres.length > 0 ? videogame.genres.map(item => {
+              let data = genres.find(element => element.id === item)
+              return <p>{data.name}</p>
+            }) : <></>
+          }
+          <label htmlFor=''>Platforms:</label>
+          <select name='platforms' onChange={handlePlatformChange}>
+            <option value='select2'>Select</option>
+            {platform.map(data =>
+              <option key={data} value={data}>{data}</option>
+            )}
+          </select>
+          {
+            videogame.platforms.length > 0 ? videogame.platforms.map(item => <p>{item}</p>) : <></>
+          }
+          <input type='submit' value='Submit' />
+        </form>
+      </div>
+    </>
   )
 }
 

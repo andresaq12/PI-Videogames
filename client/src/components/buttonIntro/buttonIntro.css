@@ -1,4 +1,4 @@
-.intro{
+.intro {
   position:absolute;
   top:0;
   width: 100vw;
@@ -9,7 +9,7 @@
   background-attachment: fixed;
 }
 
-.introButton{
+.introButton {
   position:relative;
   top: 220px;
   left: 710px;

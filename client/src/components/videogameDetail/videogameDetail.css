@@ -1,0 +1,21 @@
+.gameDetail {
+  color: white;
+  border: 1px solid blanchedalmond;
+  position: relative;
+  top: 100px;
+  width: 40%;
+  text-align: center;
+  font-size: 8px;
+  margin: auto;
+  padding: 20px;
+  border-radius: 15px;
+  backdrop-filter: blur(5px);
+}
+
+.imgDetail {
+  border-radius: 0px 0px 0px 0px;
+}
+
+.gameDescription {
+  text-align: justify;
+}

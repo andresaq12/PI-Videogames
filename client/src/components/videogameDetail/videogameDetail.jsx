@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router'
+import NavBar from '../navBar/navBar'
 import axios from 'axios'
+import '../videogameDetail/videogameDetail.css'
 
 const VideogameDetail = () => {
   const [videogame, setVideogame] = useState({})
@@ -14,19 +16,21 @@ const VideogameDetail = () => {
   }, [])
 
   return (
-    <div>
+    <>
+      <NavBar />
       {
         videogame.image ?
-          <>
-            <h2>Name:</h2>
+          <div className='gameDetail'>
             <h2>{videogame.name}</h2>
-            <img src={videogame.image} alt='imagen' width="125" height="100" />
+            <img className='imgDetail' src={videogame.image} alt='imagen' width="200" height="112.5" />
             <h2>Genres:</h2>
             {
               videogame.genres.map(item => <p>{item.name}</p>)
             }
             <h2>Description:</h2>
-            <p>{videogame.description}</p>
+            <div className='gameDescription'>
+              <p>{videogame.description}</p>
+            </div>
             <h2>Released:</h2>
             <p>{videogame.released}</p>
             <h3>Rating: {videogame.rating}</h3>
@@ -34,10 +38,10 @@ const VideogameDetail = () => {
             {
               videogame.platforms.map(item => <p>{item}</p>)
             }
-          </>
+          </div>
           : <p>Loading!!</p>
       }
-    </div>
+    </>
   )
 }
 
