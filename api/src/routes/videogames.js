@@ -38,11 +38,34 @@ router.get('/', async (req, res, next) => {
           )
           const joinData = [...dataDB, ...selectDataAPI]
           res.send(joinData)
-        }).catch(error => console.log(error))
+        })
     } else {
       //Si pedimos todos los juegos
-      let promiseAPI = axios.get(`https://api.rawg.io/api/games?page_size=100&key=${API_KEY}`) //Devuelve 100 entradas de la API
-      let promiseDB = Videogame.findAll({
+      // let data = []
+      // let promiseDB = await Videogame.findAll({
+      //   attributes: ['id', 'name', 'image', 'rating'],  //atributos que pido de Videogame
+      //   include: {
+      //     model: Genre, //incluimos datos de Genre
+      //     attributes: ['name'], //atributo que pido de Genre
+      //     through: {
+      //       attributes: []  //indicamos que no queremos ningún dato de videogames_genres, que es la tabla unión
+      //     }
+      //   },
+      //   // limit: 15
+      // })
+      // data = [...data, ...promiseDB]
+      // for (let i = 1; i < 6; i++) {
+      //   let promiseAPI = await axios.get(`https://api.rawg.io/api/games?page=${i}&key=${API_KEY}`) //Devuelve 100 entradas de la API
+      //   const selectDataAPI = promiseAPI.data.results.map(({ id, name, background_image, rating, genres }) => ({ id, name, image: background_image, rating, genres: genres.map(({ id, name }) => ({ id, name })) }))
+      //   data = [...data, ...selectDataAPI]
+      //   console.log('Data:', data.length)
+      // }
+      // console.log(data.length)
+      // res.send(data)
+      //
+      let dataPromise = []
+      let dataFiltered = []
+      let promiseDB = await Videogame.findAll({
         attributes: ['id', 'name', 'image', 'rating'],  //atributos que pido de Videogame
         include: {
           model: Genre, //incluimos datos de Genre
@@ -51,15 +74,42 @@ router.get('/', async (req, res, next) => {
             attributes: []  //indicamos que no queremos ningún dato de videogames_genres, que es la tabla unión
           }
         },
-        limit: 15 //limite de 15 datos
+        // limit: 15
       })
-      Promise.all([promiseAPI, promiseDB])
+      dataFiltered = [...dataFiltered, ...promiseDB]
+      for (let i = 1; i < 6; i++) {
+        dataPromise.push(axios.get(`https://api.rawg.io/api/games?page=${i}&key=${API_KEY}`))
+      }
+      Promise.all(dataPromise)
         .then(response => {
-          const [dataAPI, dataDB] = response
-          const selectDataAPI = dataAPI.data.results.map(({ id, name, background_image, rating, genres }) => ({ id, name, image: background_image, rating, genres: genres.map(({ id, name }) => ({ id, name })) }))
-          const joinData = [...dataDB, ...selectDataAPI]
-          res.send(joinData)
-        }).catch(error => console.log(error))
+          for (const item of response) {
+            let newData = item.data.results.map(({ id, name, background_image, rating, genres }) => ({ id, name, image: background_image, rating, genres: genres.map(({ id, name }) => ({ id, name })) }))
+            dataFiltered = [...dataFiltered, ...newData]
+          }
+          res.send(dataFiltered)
+        })
+
+      // let promiseAPI = axios.get(`https://api.rawg.io/api/games?page=1&key=${API_KEY}`) //Devuelve 100 entradas de la API
+      // let promiseDB = Videogame.findAll({
+      //   attributes: ['id', 'name', 'image', 'rating'],  //atributos que pido de Videogame
+      //   include: {
+      //     model: Genre, //incluimos datos de Genre
+      //     attributes: ['name'], //atributo que pido de Genre
+      //     through: {
+      //       attributes: []  //indicamos que no queremos ningún dato de videogames_genres, que es la tabla unión
+      //     }
+      //   },
+      //   // limit: 15
+      // })
+      // Promise.all([promiseAPI, promiseDB])
+      //   .then(response => {
+      //     const [dataAPI, dataDB] = response
+      //     const selectDataAPI = dataAPI.data.results.map(({ id, name, background_image, rating, genres }) => ({ id, name, image: background_image, rating, genres: genres.map(({ id, name }) => ({ id, name })) }))
+      //     const joinData = [...dataDB, ...selectDataAPI]
+      //     console.log('DATA_API: ', selectDataAPI.length)
+      //     console.log('FINAL: ', joinData.length)
+      //     res.send(joinData)
+      //   })
     }
   } catch (error) {
     next(error)

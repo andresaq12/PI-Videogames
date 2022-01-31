@@ -1,20 +1,47 @@
 .intro {
-  position:absolute;
+  position:fixed;
   top:0;
   width: 100vw;
   height: 100vh;
-  background-image: url('https://wallpaperaccess.com/full/3026436.jpg');
-  background-size: auto;
-  max-width: 100%;
-  background-position: center;
+  background-image: url('https://eskipaper.com/images/video-game-wallpapers-8.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  background-position: center center;
   background-attachment: fixed;
 }
 
 .introButton {
   position:relative;
-  top: 400px;
-  left: 1350px;
+  margin-left: auto;
+  margin-top: auto;
   height: 70px;
   width: 200px;
   font-size: 30px;
+  color: #36395A;
+  text-decoration: none;
+  transition: box-shadow .15s,transform .15s;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(196, 194, 194, 0.19);
+}
+.buttonContainer {
+  margin: auto;
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  margin-top: 58vh;
+}
+
+.introText {
+  color: aqua;
+  font-weight: bold;
+  font-size: 70px;
+  margin: auto;
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  margin-top: 10vh;
+}
+
+.introText p {
+  margin: 0;
 }

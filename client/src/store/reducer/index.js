@@ -1,8 +1,7 @@
 const initialState = {
   videogames: [],
   filteredVideogames: [],
-  videogameDetail: {},
-  genres: []
+  genres: [],
 }
 
 const appReducer = (state = initialState, action) => {
