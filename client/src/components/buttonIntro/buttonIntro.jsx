@@ -7,7 +7,7 @@ const ButtonIntro = () => {
     <>
       <div className='intro'>
         <Link to='/home'>
-          <button className='introButton' type="button">Ingrese</button>
+          <button className='introButton' type="button">Enter</button>
         </Link>
       </div>
     </>

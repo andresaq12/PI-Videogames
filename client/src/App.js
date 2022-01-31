@@ -1,9 +1,9 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
-import './App.css'
 import ButtonIntro from './components/buttonIntro/buttonIntro'
 import FormVideogame from './components/formVideogame/formVideogame'
 import VideogameDetail from './components/videogameDetail/videogameDetail'
 import Videogames from './components/videogames/videogames'
+import './App.css'
 
 function App() {
   return (

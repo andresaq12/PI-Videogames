@@ -1,13 +1,12 @@
 import { useDispatch } from "react-redux"
 import { selectType } from "../../store/actions"
 
-
 const TypeFilter = () => {
   const dispatch = useDispatch()
 
   const handleChange = (e) => {
-    console.log(e.target.value)
-    dispatch(selectType(e.target.value))
+    const { value } = e.target
+    dispatch(selectType(value))
   }
 
   return (

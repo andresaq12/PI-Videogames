@@ -1,14 +1,13 @@
 import { useDispatch } from 'react-redux'
 import { sortVideogames } from '../../store/actions'
 
-
 const Order = () => {
 
   const dispatch = useDispatch()
 
   const handleChange = (e) => {
-    console.log(e.target.value)
-    dispatch(sortVideogames(e.target.value))
+    const { value } = e.target
+    dispatch(sortVideogames(value))
   }
 
   return (

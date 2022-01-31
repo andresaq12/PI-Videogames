@@ -3,9 +3,9 @@
   border: 1px solid blanchedalmond;
   position: relative;
   top: 100px;
-  width: 25%;
+  width: 40%;
   text-align: center;
-  font-size: 8px;
+  font-size: 10px;
   margin: auto;
   padding: 20px;
   border-radius: 15px;
@@ -13,34 +13,86 @@
 }
 
 label {
-  font-size: 9px;
-}
-
-.gameForm input[type=text], select {
-  padding: 8px 10px;
-  border-radius: 4px;
-  box-sizing: border-box;
-  margin-top: 6px;
-  margin-bottom: 16px;
+  display: block;
+  font-size: 22px;
 }
 
 .gameForm input[type=text] {
-  font-size: 10px;
-  width: 220px;
-  height: 4px;
+  font-weight: bold;
+  padding: 8px 5px;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 6px;
+  font-size: 22px;
+  height: 50px;
+  width: 100%;
   font-family: 'Montserrat', sans-serif;
 }
 
+.gameForm input[type=date] {
+  width: 100%;
+  height: 40px;
+  font-size: 22px;
+}
+
+.gameForm input[type=submit] {
+  margin: 0 auto;
+  display: block;
+  align-items: center;
+  height: 50px;
+  width: 150px;
+  font-size: 25px;
+}
+
 textarea {
-  width: 214px;
-  font-size: 10px;
+  display: block;
+  width: 60%;
+  font-size: 19px;
   font-family: 'Montserrat', sans-serif;
   resize:vertical;
   margin-top: 6px;
   margin-bottom: 16px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .gameForm p {
-  font-size: 12px;
+  font-size: 50px;
   font-weight: bold;
+  display: inline-block;
+  margin: 10px 10px 30px 10px;
+}
+
+.gameForm select {
+  font-size: 9px;
+  padding: 3px 5px;
+  margin: 10px 0;
+  max-width: 100%;
+  height: 35px; 
+  font-size: 20px;
+}
+
+.dataGenres, .dataPlatforms {
+  display: grid;
+  grid-template-columns: 100px 100px;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.dataGenres p, .dataPlatforms p {
+    font-size: 20px;
+}
+
+.submitForm {
+  margin: 15px;
+}
+
+.errorForm p {
+  font-size: 15px;
+}
+
+.nameForm, .imageForm, .releasedForm, .ratingForm {
+  width: 60%;
+  margin: auto;
 }

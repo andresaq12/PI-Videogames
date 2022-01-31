@@ -1,14 +1,13 @@
 import { useDispatch } from 'react-redux'
 import { ratingVideogames } from '../../store/actions'
 
-
 const Rating = () => {
 
   const dispatch = useDispatch()
 
   const handleChange = (e) => {
-    console.log(e.target.value)
-    dispatch(ratingVideogames(e.target.value))
+    const { value } = e.target
+    dispatch(ratingVideogames(value))
   }
 
   return (

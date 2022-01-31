@@ -24,9 +24,11 @@ const VideogameDetail = () => {
             <h2>{videogame.name}</h2>
             <img className='imgDetail' src={videogame.image} alt='imagen' width="200" height="112.5" />
             <h2>Genres:</h2>
-            {
-              videogame.genres.map(item => <p>{item.name}</p>)
-            }
+            <div className='genresDetail'>
+              {
+                videogame.genres.map(item => <p>{item.name}</p>)
+              }
+            </div>
             <h2>Description:</h2>
             <div className='gameDescription'>
               <p>{videogame.description}</p>
@@ -35,9 +37,11 @@ const VideogameDetail = () => {
             <p>{videogame.released}</p>
             <h3>Rating: {videogame.rating}</h3>
             <h3>Platforms:</h3>
-            {
-              videogame.platforms.map(item => <p>{item}</p>)
-            }
+            <div className='platformsDetail'>
+              {
+                videogame.platforms.map(item => <p>{item}</p>)
+              }
+            </div>
           </div>
           : <p>Loading!!</p>
       }

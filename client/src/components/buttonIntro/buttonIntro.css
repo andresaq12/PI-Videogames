@@ -4,13 +4,17 @@
   width: 100vw;
   height: 100vh;
   background-image: url('https://wallpaperaccess.com/full/3026436.jpg');
-  background-size: 100%;
+  background-size: auto;
+  max-width: 100%;
   background-position: center;
   background-attachment: fixed;
 }
 
 .introButton {
   position:relative;
-  top: 220px;
-  left: 710px;
+  top: 400px;
+  left: 1350px;
+  height: 70px;
+  width: 200px;
+  font-size: 30px;
 }

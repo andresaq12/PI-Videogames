@@ -2,10 +2,9 @@ body {
   margin: 0;
   padding:0;
   box-sizing: border-box;
-  /* background-color: darkslategrey; */
   background-image: url('https://www.pixelstalk.net/wp-content/uploads/2016/03/Dark-Wallpaper-Desktop-Background-1B6.jpg');
   background-repeat: no-repeat;
-  background-size: 100%;
+  /* background-size: 100%; */
   background-position: center;
   background-attachment: fixed;
 

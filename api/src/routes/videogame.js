@@ -46,7 +46,6 @@ router.get('/:idVideogame', async (req, res, next) => {
 router.post('/', async (req, res, next) => {
   try {
     const { name, description, released, image, rating, platforms, genres } = req.body
-    console.log(req.body)
     const newVideogame = await Videogame.create({
       name,
       description,
@@ -55,7 +54,6 @@ router.post('/', async (req, res, next) => {
       rating,
       platforms
     })
-    console.log(genres)
     for (let i = 0; i < genres.length; i++) {
       let genre = await Genre.findByPk(genres[i])
       console.log(genre)

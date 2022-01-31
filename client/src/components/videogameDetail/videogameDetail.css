@@ -19,3 +19,10 @@
 .gameDescription {
   text-align: justify;
 }
+
+.genresDetail, .platformsDetail {
+  display: grid;
+  grid-template-columns: 100px 100px;
+  align-items: center;
+  justify-content: center;
+}
