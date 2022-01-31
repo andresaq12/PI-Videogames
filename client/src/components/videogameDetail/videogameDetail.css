@@ -3,9 +3,9 @@
   border: 1px solid blanchedalmond;
   position: relative;
   top: 100px;
-  width: 40%;
+  width: 50%;
   text-align: center;
-  font-size: 8px;
+  font-size: 20px;
   margin: auto;
   padding: 20px;
   border-radius: 15px;
@@ -13,7 +13,17 @@
 }
 
 .imgDetail {
-  border-radius: 0px 0px 0px 0px;
+  border: 3px dotted aqua;
+  margin: auto;
+  object-fit: cover;
+  /* width: 10%;; */
+  /* display: grid; */
+  justify-content: f;
+}
+.imgDetail img {
+  border-radius: 5px;
+  width: 70%;
+  height: 40%;
 }
 
 .gameDescription {

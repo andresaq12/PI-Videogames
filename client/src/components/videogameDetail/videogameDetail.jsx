@@ -22,7 +22,9 @@ const VideogameDetail = () => {
         videogame.image ?
           <div className='gameDetail'>
             <h2>{videogame.name}</h2>
-            <img className='imgDetail' src={videogame.image} alt='imagen' width="200" height="112.5" />
+            <div className='imgDetail'>
+              <img src={videogame.image} alt='imagen' />
+            </div>
             <h2>Genres:</h2>
             <div className='genresDetail'>
               {
