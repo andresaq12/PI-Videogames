@@ -18,7 +18,7 @@ const SearchBar = () => {
   }
 
   return (
-    <div>
+    <div className='searchDiv'>
       <form onSubmit={handleSubmit}>
         <input type='text' placeholder='Videojuego...' onChange={handleInputChange} />
         <button type='submit' value='Buscar' className='buttonSearch' >Buscar</button>

@@ -25,8 +25,11 @@ const appReducer = (state = initialState, action) => {
         genres: action.payload
       }
     case 'SELECT_GENRE':
-      if (action.payload === 'selecciona') return {
-        ...state
+      if (action.payload === 0) {
+        return {
+          ...state,
+          filteredVideogames: state.videogames
+        }
       }
       let genreVideogames = state.videogames.filter(item => item.genres.map(data => data.id).includes(action.payload))
       return {
@@ -34,28 +37,28 @@ const appReducer = (state = initialState, action) => {
         filteredVideogames: genreVideogames
       }
     case 'SORT':
-      if (action.payload === 'Selecciona') return {
+      if (action.payload === 'selecciona') return {
         ...state
       }
-      let orderedVideogames = [...state.videogames]
+      let orderedVideogames = [...state.filteredVideogames]
       orderedVideogames = orderedVideogames.sort((a, b) => {
         if (a.name > b.name) {
-          return action.payload === 'Ascendente' ? 1 : -1
+          return action.payload === 'ascendente' ? 1 : -1
         }
         if (a.name < b.name) {
-          return action.payload === 'Ascendente' ? -1 : 1
+          return action.payload === 'ascendente' ? -1 : 1
         }
         return 0
       })
       return {
         ...state,
-        filteredVideogames: state.videogames
+        filteredVideogames: orderedVideogames
       }
     case 'RATING':
       if (action.payload === 'selecciona') return {
         ...state
       }
-      let ratingVideogames = [...state.videogames]
+      let ratingVideogames = [...state.filteredVideogames]
       ratingVideogames = ratingVideogames.sort((a, b) => {
         if (a.rating > b.rating) {
           return action.payload === 'ratingUp' ? 1 : -1
@@ -72,7 +75,7 @@ const appReducer = (state = initialState, action) => {
     case 'SELECT_TYPE':
       if (action.payload === 'all') return {
         ...state,
-        filteredVideogames: state.filteredVideogames
+        filteredVideogames: state.videogames
       }
       let typeVideogames = []
       if (action.payload === 'api') {

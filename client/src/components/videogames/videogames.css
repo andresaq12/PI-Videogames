@@ -2,25 +2,23 @@
   color: cornsilk;
 }
 .filters{
-  height: 200px;
-  width: 150px;
+  width: 200px;
   position: fixed;
-  top: 53.5px;
-  left: 0;
-  padding-top: 40px;
+  top: 120px;
   background-color: transparent;
 }
 
 .filters div {
   padding: 8px;
-  font-size: 24px;
-  display: block;
+  font-size: 21px;
+  display: grid;
+  justify-content: space-between;
 }
 
 .cards {
   display: grid;
-  grid-template-columns: 150px 150px 150px 150px; 
+  grid-template-columns: 300px 300px 300px; 
   margin-left: 150px;
-  padding-top: 80px;
+  padding-top: 120px;
   justify-content: space-evenly;
 }

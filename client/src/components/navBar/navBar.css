@@ -3,40 +3,48 @@
 header {
   display: flex;
   width: 100%;
+  height: 80px;
   position: fixed;
-  justify-content: flex-start;
   align-items: center;
   background-color: darkred;
   z-index: 10;
   opacity: 0;
   top: 0;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 header:hover{
   opacity: 1;
-  transition: all 0.3s ease 0s;
+  transition: all 0.5s ease 0s;
 }
 
 .navItem {
   font-family: 'Montserrat', sans-serif;
-  font-weight: 500;
-  font-size: 13px;
+  font-size: 30px;
+  font-weight: bold;
   color: antiquewhite;
   text-align: right;
-  /* opacity: 1; */
 } 
 
 .navLinks{
+  display: flex;
   list-style: none;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
 
 .navLinks li {
   display: inline-block;
   padding: 0px 20px 0px 20px;
-  transition: all 0.3s ease 0s;
+  transition: all 0.5s ease 0s;
 }
 
 .textlink{
   text-decoration: none;
   color: azure;
+}
+
+.nav{
+  width: 40%;
 }

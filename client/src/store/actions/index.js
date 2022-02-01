@@ -42,6 +42,13 @@ export const fetchGenres = () => {
   }
 }
 
+export const selectGenre = (genreID) => {
+  return {
+    type: 'SELECT_GENRE',
+    payload: Number(genreID)
+  }
+}
+
 export const sortVideogames = (sortType) => {
   return {
     type: 'SORT',
@@ -56,14 +63,9 @@ export const ratingVideogames = (sortType) => {
   }
 }
 
-export const selectGenre = (genreID) => {
-  return {
-    type: 'SELECT_GENRE',
-    payload: Number(genreID)
-  }
-}
 
 export const selectType = (search) => {
+  console.log(search)
   return {
     type: 'SELECT_TYPE',
     payload: search

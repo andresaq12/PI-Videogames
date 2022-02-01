@@ -44,7 +44,7 @@ const FormVideogame = ({ genres }) => {
     e.preventDefault()
     if (Object.keys(error).length === 0) {
       axios.post(`http://localhost:3001/videogame`, videogame)
-        .then(() => { })
+        .then(() => alert('Videojuego agregado correctamente'))
     } else {
       alert('Faltan algunos campos. Revise nuevamente')
     }

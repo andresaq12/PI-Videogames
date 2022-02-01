@@ -1,22 +1,26 @@
-import { useDispatch } from 'react-redux'
+import { connect } from 'react-redux'
 import { sortVideogames } from '../../store/actions'
 
-const Order = () => {
-
-  const dispatch = useDispatch()
+const Order = ({ sortVideogames }) => {
 
   const handleChange = (e) => {
     const { value } = e.target
-    dispatch(sortVideogames(value))
+    sortVideogames(value)
   }
 
   return (
     <select name='select' onChange={handleChange}>
-      <option value='Selecciona'>Selecciona</option>
-      <option value='Ascendente'>Ascendente</option>
-      <option value='Descendente'>Descendente</option>
+      <option value='selecciona'>Selecciona</option>
+      <option value='ascendente'>A-Z</option>
+      <option value='descendente'>Z-A</option>
     </select>
   )
 }
 
-export default Order
+const mapDispatchToProps = (dispatch) => {
+  return {
+    sortVideogames: value => dispatch(sortVideogames(value))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(Order)

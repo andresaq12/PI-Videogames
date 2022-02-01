@@ -1,12 +1,11 @@
-import { useDispatch } from "react-redux"
+import { connect } from "react-redux"
 import { selectType } from "../../store/actions"
 
-const TypeFilter = () => {
-  const dispatch = useDispatch()
+const TypeFilter = ({ selectType }) => {
 
   const handleChange = (e) => {
     const { value } = e.target
-    dispatch(selectType(value))
+    selectType(value)
   }
 
   return (
@@ -18,4 +17,10 @@ const TypeFilter = () => {
   )
 }
 
-export default TypeFilter
+const mapDispatchToProps = (dispatch) => {
+  return {
+    selectType: value => dispatch(selectType(value))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(TypeFilter)

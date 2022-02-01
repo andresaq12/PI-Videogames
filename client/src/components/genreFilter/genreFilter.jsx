@@ -1,22 +1,21 @@
 import { useEffect } from "react"
-import { useDispatch } from "react-redux"
+import { connect } from "react-redux"
 import { fetchGenres, selectGenre } from "../../store/actions"
-import { connect } from 'react-redux'
 
-const GenreFilter = ({ genres }) => {
-  const dispatch = useDispatch()
+const GenreFilter = ({ genres, selectGenre, fetchGenres }) => {
 
   const handleChange = (e) => {
-    dispatch(selectGenre(e.target.value))
+    const { value } = e.target
+    selectGenre(value)
   }
 
   useEffect(() => {
-    dispatch(fetchGenres())
+    fetchGenres()
   }, [])
 
   return (
     <select name='select' onChange={handleChange}>
-      <option value='all'>All</option>
+      <option key={0} value={0}>All</option>
       {genres.map(genre =>
         <option key={genre.id} value={genre.id}>{genre.name}</option>
       )}
@@ -24,10 +23,17 @@ const GenreFilter = ({ genres }) => {
   )
 }
 
-const mapStatetoProps = (state) => {
+const mapStateToProps = (state) => {
   return {
     genres: state.genres
   }
 }
 
-export default connect(mapStatetoProps)(GenreFilter)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchGenres: () => dispatch(fetchGenres()),
+    selectGenre: value => dispatch(selectGenre(value))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(GenreFilter)

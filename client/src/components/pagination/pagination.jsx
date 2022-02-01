@@ -1,5 +1,4 @@
-import { Link } from "react-router-dom"
-
+import '../pagination/pagination.css'
 
 const Pagination = ({ cardsPerPage, totalCards, paginate }) => {
   const pageNumbers = []
