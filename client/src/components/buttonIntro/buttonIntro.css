@@ -12,6 +12,7 @@
 }
 
 .introButton {
+  cursor: pointer;
   position:relative;
   margin-left: auto;
   margin-top: auto;

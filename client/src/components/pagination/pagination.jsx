@@ -1,6 +1,6 @@
 import '../pagination/pagination.css'
 
-const Pagination = ({ cardsPerPage, totalCards, paginate }) => {
+const Pagination = ({ cardsPerPage, totalCards, paginate, currrentPage }) => {
   const pageNumbers = []
 
   for (let i = 1; i <= Math.ceil(totalCards / cardsPerPage); i++) {
@@ -8,17 +8,18 @@ const Pagination = ({ cardsPerPage, totalCards, paginate }) => {
   }
 
   return (
-    <div>
-      <ul className="pagination">
+    <>
+      <div className='titlePag'>
+        <p>Páginas</p>
+      </div>
+      <div className="pagination">
         {
           pageNumbers.map(number =>
-            <li key={number} className="pageItem">
-              <a onClick={() => paginate(number)} href="#" className="pageLink">{number}
-              </a>
-            </li>)
+            <button key={number} onClick={() => paginate(number)} className="pageItem">{number}</button>
+          )
         }
-      </ul>
-    </div>
+      </div>
+    </>
   )
 }
 

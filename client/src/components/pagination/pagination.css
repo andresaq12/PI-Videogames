@@ -1,19 +1,20 @@
-.pagination {
-  padding: 0px 1px;
-  font-size: 25px;
-  list-style: none;
-  width: 180px;
-}
-
-a {
-  text-decoration: none;
-  color: white;
-  font-weight: bold;
-}
-
-div ul {
+.pagination{
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.pagination button {
+  font-size: 18px;
+  margin: 0 2px;
+  cursor: pointer;
+}
+
+.titlePag p {
+  text-align: center;
+  font-size: 25px;
+  font-weight: bold;
+  color: yellow;
 }
 
 .pageItem {
@@ -21,3 +22,4 @@ div ul {
   border-radius: 5px;
   padding: 4px;
 }
+

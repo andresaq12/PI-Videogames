@@ -27,7 +27,7 @@ const Videogames = ({ videogames, fetchVideogames }) => {
       <NavBar />
       <div className='filters'>
         <Filters />
-        <Pagination cardsPerPage={cardsPerPage} totalCards={videogames.length} paginate={paginate} />
+        <Pagination cardsPerPage={cardsPerPage} totalCards={videogames.length} paginate={paginate} actualPage={currentPage} />
       </div>
       <div className='cards'>
         {videogames.length >= 1 &&

@@ -1,5 +1,9 @@
 .containerFilter {
   color: blanchedalmond;
+  padding: 8px;
+  font-size: 21px;
+  display: grid;
+  justify-content: space-between;
 }
 
 select {

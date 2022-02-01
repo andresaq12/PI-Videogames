@@ -7,7 +7,7 @@ const ButtonIntro = () => {
     <>
       <div className='intro'>
         <div className='introText'>
-          <p>VIDEOJUEGOS</p>
+          <p>VIDEOGAMES</p>
         </div>
         <div className='buttonContainer'>
           <Link to='/home'>

@@ -94,7 +94,7 @@ __IMPORTANTE__: No se permitirá utilizar librerías externas para aplicar estil
 Se debe desarrollar una aplicación de React/Redux que contenga las siguientes pantallas/rutas.
 
 __Pagina inicial__: deben armar una landing page con
-- [ ] Alguna imagen de fondo representativa al proyecto
+- [:heavy_check_mark:] Alguna imagen de fondo representativa al proyecto
 - [:heavy_check_mark:] Botón para ingresar al home (`Ruta principal`)
 
 __Ruta principal__: debe contener
@@ -105,7 +105,7 @@ __Ruta principal__: debe contener
   - Géneros
 - [:heavy_check_mark:] Botones/Opciones para filtrar por género y por videojuego existente o agregado por nosotros
 - [:heavy_check_mark:] Botones/Opciones para ordenar tanto ascendentemente como descendentemente los videojuegos por orden alfabético y por rating
-- [ ] Paginado para ir buscando y mostrando los siguientes videojuegos, 15 juegos por pagina, mostrando los primeros 15 en la primer pagina.
+- [:heavy_check_mark:] Paginado para ir buscando y mostrando los siguientes videojuegos, 15 juegos por pagina, mostrando los primeros 15 en la primer pagina.
 
 __IMPORTANTE__: Dentro de la Ruta Principal se deben mostrar tanto los videjuegos traidos desde la API como así también los de la base de datos. Debido a que en la API existen alrededor de 500 mil juegos, por cuestiones de performance pueden tomar la simplificación de obtener y paginar los primeras 100.
 
@@ -124,7 +124,7 @@ __Ruta de creación de videojuegos__: debe contener
   - Rating
 - [:heavy_check_mark:] Posibilidad de seleccionar/agregar varios géneros
 - [:heavy_check_mark:] Posibilidad de seleccionar/agregar varias plataformas
-- [] Botón/Opción para crear un nuevo videojuego
+- [:heavy_check_mark:] Botón/Opción para crear un nuevo videojuego
 
 > Es requisito que el formulario de creación esté validado con JavaScript y no sólo con validaciones HTML. Pueden agregar las validaciones que consideren. Por ejemplo: Que el nombre del juego no pueda contener algunos símbolos, que el rating no pueda exceder determinado valor, etc.
 

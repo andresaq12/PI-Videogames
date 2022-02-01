@@ -17,9 +17,8 @@ const Videogame = ({ id, name, image, rating, genres }) => {
       </div >
       <div className='hide'>
         {
-          genres && genres.map(item => <p>{item.name}</p>)
+          genres && genres.map((item, idx) => <p key={idx}>{item.name}</p>)
         }
-        {/* <p>{genres[0].name}</p> */}
       </div>
       <div className='imgBox'>
         <div className='img-card' style={{ backgroundImage: `url(${image})` }}>
