@@ -1,8 +1,8 @@
-const axios = require('axios')
 const { Router } = require('express')
 const { Genre } = require('../db')
 const { API_KEY } = process.env
 const router = Router()
+const axios = require('axios')
 
 // ---- GET /genres ---- CHECK
 router.get('/', async (req, res, next) => {

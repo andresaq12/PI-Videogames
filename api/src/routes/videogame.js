@@ -56,7 +56,6 @@ router.post('/', async (req, res, next) => {
     })
     for (let i = 0; i < genres.length; i++) {
       let genre = await Genre.findByPk(genres[i])
-      console.log(genre)
       await genre.addVideogame(newVideogame.id)
     }
     res.send(newVideogame)
