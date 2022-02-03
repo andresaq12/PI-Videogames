@@ -1,8 +1,10 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
+test('Test App', () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  const textElement = screen.getByText(/Videogames/i);
+  const button = screen.getByDisplayValue(/Enter/i)
+  expect(textElement).toBeInTheDocument();
+  expect(button).toBeInTheDocument();
 });

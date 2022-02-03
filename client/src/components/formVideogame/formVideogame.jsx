@@ -1,50 +1,56 @@
 import NavBar from '../navBar/navBar'
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { connect } from 'react-redux'
+import { fetchGenres } from "../../store/actions"
 import axios from 'axios'
 import '../formVideogame/formVideogame.css'
 
-const FormVideogame = ({ genres }) => {
+const validate = (input) => {
+  let errors = {}
+  if (input.name === '') {
+    errors.name = 'Name required'
+  } else if (!/^[a-zA-Z0-9_: &()]+$/.test(input.name)) {
+    errors.name = 'Invalid character'
+  }
+  if (!input.rating) {
+    errors.rating = 'Rating required'
+  } else if (!/^[0-4](,|\.)[0-9]{2}|5(,|\.)0{2}/.test(input.rating)) {
+    errors.rating = 'Invalid rating'
+  }
+  if (!input.image) {
+    errors.image = 'Image required'
+  } else if (!/(http)?s?:?(\/\/[^"']*\.(?:png|jpg|jpeg|gif|png|svg))/.test(input.image)) {
+    errors.image = 'Invalid link image'
+  }
+  if (!input.released) {
+    errors.released = 'Date required'
+  } else if (!/([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/.test(input.released)) {
+    errors.released = 'Invalid date'
+  }
+  if (!input.description) {
+    errors.description = 'Description must be not empty'
+  }
+  if (input.genres.length < 1) {
+    errors.genres = 'Select at least one genre'
+  }
+  if (input.platforms.length < 1) {
+    errors.platforms = 'Select at least one platform'
+  }
+  return errors
+}
+
+const FormVideogame = ({ genres, fetchGenres }) => {
   const [videogame, setVideogame] = useState({ name: '', rating: '', image: '', released: '', description: '', genres: [], platforms: [] })
-  const [error, setError] = useState({ name: '', rating: '', image: '', released: '', description: '', genres: [], platforms: [] })
+  const [error, setError] = useState({ name: '', rating: '', image: '', released: '', description: '', genres: '', platforms: '' })
 
   const platform = ['Xbox One', 'PlayStation 4', 'Xbox 360', 'PC', 'macOs', 'Linux', 'Xbox Series S/X', 'Xbox', 'PlayStation 5', 'Nintendo Switch', 'PlayStation 2', 'PlayStation 3']
-
-  const validate = (input) => {
-    let errors = {}
-    if (!input.name) {
-      errors.name = 'Name required'
-    } else if (!/^[a-zA-Z0-9_.,: &()]+$/.test(input.name)) {
-      errors.name = 'Invalid character'
-    }
-    if (!input.rating) {
-      errors.rating = 'Rating required'
-    } else if (!/[0-4](,|\.)[0-9]{2}|5(,|\.)0{2}/.test(input.rating)) {
-      errors.rating = 'Invalid rating'
-    }
-    if (!input.image) {
-      errors.image = 'Image required'
-    }
-    if (!input.released) {
-      errors.released = 'Invalid date'
-    }
-    if (!input.description) {
-      errors.description = 'Description must be not empty'
-    }
-    if (input.genres.length < 1) {
-      errors.genres = 'Select one genre'
-    }
-    if (input.platforms.length < 1) {
-      errors.platforms = 'Select one platform'
-    }
-    return errors
-  }
 
   const handleSubmit = (e) => {
     e.preventDefault()
     if (Object.keys(error).length === 0) {
       axios.post(`http://localhost:3001/videogame`, videogame)
         .then(() => alert('Videojuego agregado correctamente'))
+        .catch(() => alert('Videojuego no ha podido ser agregado'))
     } else {
       alert('Faltan algunos campos. Revise nuevamente')
     }
@@ -67,15 +73,23 @@ const FormVideogame = ({ genres }) => {
         ...videogame,
         [name]: [...videogame[name], value]
       })
+      let data = validate({ ...videogame, [name]: value })
+      setError({ ...data })
+      e.target.value = 'select'
     } else {
       setVideogame({
         ...videogame,
         [name]: [...videogame[name].filter(data => data !== value)]
       })
+      let data = validate({ ...videogame, [name]: videogame[name].filter(data => data !== value) })
+      setError({ ...data })
+      e.target.value = 'select'
     }
-    let data = validate({ ...videogame, [name]: value })
-    setError({ ...data })
   }
+
+  useEffect(() => {
+    fetchGenres()
+  }, [])
 
   return (
     <>
@@ -88,7 +102,7 @@ const FormVideogame = ({ genres }) => {
           </div>
           <div className='errorForm'>
             {
-              error.name ? <p>Invalid character</p> : <p></p>
+              error.name ? <p>{error.name}</p> : <p></p>
             }
           </div>
           <div className='imageForm'>
@@ -96,7 +110,7 @@ const FormVideogame = ({ genres }) => {
           </div>
           <div className='errorForm'>
             {
-              error.image ? <p>Invalid link</p> : <p></p>
+              error.image ? <p>{error.image}</p> : <p></p>
             }
           </div>
           <div className='releasedForm'>
@@ -104,7 +118,7 @@ const FormVideogame = ({ genres }) => {
           </div>
           <div className='errorForm'>
             {
-              error.released ? <p>Invalid date</p> : <p></p>
+              error.released ? <p>{error.date}</p> : <p></p>
             }
           </div>
           <div className='ratingForm'>
@@ -112,7 +126,7 @@ const FormVideogame = ({ genres }) => {
           </div>
           <div className='errorForm'>
             {
-              error.rating ? <p>Invalid rating</p> : <p></p>
+              error.rating ? <p>{error.rating}</p> : <p></p>
             }
           </div>
           <div className='descriptionForm'>
@@ -120,7 +134,7 @@ const FormVideogame = ({ genres }) => {
           </div>
           <div className='errorForm'>
             {
-              error.description ? <p>Description must be not empty</p> : <p></p>
+              error.description ? <p>{error.description}</p> : <p></p>
             }
           </div>
           <label htmlFor=''>Genres:</label>
@@ -134,20 +148,30 @@ const FormVideogame = ({ genres }) => {
             {
               videogame.genres.length > 0 ? videogame.genres.map(item => {
                 let data = genres.find(element => element.id === item)
-                return <p>{data.name}</p>
+                return <p key={`genre${data.name}`} >{data.name}</p>
               }) : <></>
             }
           </div>
+          <div className='errorDisplay'>
+            {
+              error.genres ? <p>{error.genres}</p> : <p></p>
+            }
+          </div>
           <label htmlFor=''>Platforms:</label>
-          <select name='platforms' onChange={handleSelectChange} defaultValue={'select2'}>
-            <option value='select2' disabled hidden>Select</option>
+          <select name='platforms' onChange={handleSelectChange} defaultValue={'select'}>
+            <option value='select' disabled hidden>Select</option>
             {platform.map(data =>
               <option key={data} value={data}>{data}</option>
             )}
           </select>
           <div className='dataPlatforms'>
             {
-              videogame.platforms.length > 0 ? videogame.platforms.map(item => <p>{item}</p>) : <></>
+              videogame.platforms.length > 0 ? videogame.platforms.map(item => <p key={`platform${item}`}>{item}</p>) : <></>
+            }
+          </div>
+          <div className='errorDisplay'>
+            {
+              error.platforms ? <p>{error.platforms}</p> : <p></p>
             }
           </div>
           <div className='submitForm'>
@@ -165,4 +189,10 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(FormVideogame)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchGenres: () => dispatch(fetchGenres())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(FormVideogame)

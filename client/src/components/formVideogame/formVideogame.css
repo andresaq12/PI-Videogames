@@ -96,3 +96,7 @@ textarea {
   width: 60%;
   margin: auto;
 }
+
+.errorDisplay p {
+  font-size: 15px;
+}

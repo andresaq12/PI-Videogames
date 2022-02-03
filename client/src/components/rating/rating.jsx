@@ -1,4 +1,4 @@
-import { connect, useDispatch } from 'react-redux'
+import { connect } from 'react-redux'
 import { ratingVideogames } from '../../store/actions'
 
 const Rating = ({ ratingVideogames }) => {
