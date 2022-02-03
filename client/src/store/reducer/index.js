@@ -2,6 +2,7 @@ const initialState = {
   videogames: [],
   filteredVideogames: [],
   genres: [],
+  currentPage: 1
 }
 
 const appReducer = (state = initialState, action) => {
@@ -90,6 +91,11 @@ const appReducer = (state = initialState, action) => {
           ...state,
           filteredVideogames: typeVideogames
         }
+      }
+    case 'SET_PAGE':
+      return {
+        ...state,
+        currentPage: action.payload
       }
     default:
       return {

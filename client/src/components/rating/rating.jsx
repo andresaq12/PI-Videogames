@@ -1,11 +1,12 @@
 import { connect } from 'react-redux'
-import { ratingVideogames } from '../../store/actions'
+import { ratingVideogames, setCurrentPage } from '../../store/actions'
 
-const Rating = ({ ratingVideogames }) => {
+const Rating = ({ ratingVideogames, setCurrentPage }) => {
 
   const handleChange = (e) => {
     const { value } = e.target
     ratingVideogames(value)
+    setCurrentPage(1)
   }
 
   return (
@@ -19,7 +20,8 @@ const Rating = ({ ratingVideogames }) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    ratingVideogames: value => dispatch(ratingVideogames(value))
+    ratingVideogames: value => dispatch(ratingVideogames(value)),
+    setCurrentPage: value => dispatch(setCurrentPage(value))
   }
 }
 

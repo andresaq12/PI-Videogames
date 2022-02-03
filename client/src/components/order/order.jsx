@@ -1,11 +1,12 @@
 import { connect } from 'react-redux'
-import { sortVideogames } from '../../store/actions'
+import { sortVideogames, setCurrentPage } from '../../store/actions'
 
-const Order = ({ sortVideogames }) => {
+const Order = ({ sortVideogames, setCurrentPage }) => {
 
   const handleChange = (e) => {
     const { value } = e.target
     sortVideogames(value)
+    setCurrentPage(1)
   }
 
   return (
@@ -19,7 +20,8 @@ const Order = ({ sortVideogames }) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    sortVideogames: value => dispatch(sortVideogames(value))
+    sortVideogames: value => dispatch(sortVideogames(value)),
+    setCurrentPage: value => dispatch(setCurrentPage(value))
   }
 }
 

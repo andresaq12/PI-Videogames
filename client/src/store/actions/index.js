@@ -65,9 +65,15 @@ export const ratingVideogames = (sortType) => {
 
 
 export const selectType = (search) => {
-  console.log(search)
   return {
     type: 'SELECT_TYPE',
     payload: search
+  }
+}
+
+export const setCurrentPage = (page) => {
+  return {
+    type: 'SET_PAGE',
+    payload: parseInt(page)
   }
 }

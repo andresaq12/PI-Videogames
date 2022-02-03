@@ -1,11 +1,12 @@
 import { connect } from "react-redux"
-import { selectType } from "../../store/actions"
+import { selectType, setCurrentPage } from "../../store/actions"
 
-const TypeFilter = ({ selectType }) => {
+const TypeFilter = ({ selectType, setCurrentPage }) => {
 
   const handleChange = (e) => {
     const { value } = e.target
     selectType(value)
+    setCurrentPage(1)
   }
 
   return (
@@ -19,7 +20,8 @@ const TypeFilter = ({ selectType }) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    selectType: value => dispatch(selectType(value))
+    selectType: value => dispatch(selectType(value)),
+    setCurrentPage: value => dispatch(setCurrentPage(value))
   }
 }
 

@@ -1,12 +1,13 @@
 import { useEffect } from "react"
 import { connect } from "react-redux"
-import { fetchGenres, selectGenre } from "../../store/actions"
+import { fetchGenres, selectGenre, setCurrentPage } from "../../store/actions"
 
-const GenreFilter = ({ genres, selectGenre, fetchGenres }) => {
+const GenreFilter = ({ genres, selectGenre, fetchGenres, setCurrentPage }) => {
 
   const handleChange = (e) => {
     const { value } = e.target
     selectGenre(value)
+    setCurrentPage(1)
   }
 
   useEffect(() => {
@@ -32,7 +33,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchGenres: () => dispatch(fetchGenres()),
-    selectGenre: value => dispatch(selectGenre(value))
+    selectGenre: value => dispatch(selectGenre(value)),
+    setCurrentPage: value => dispatch(setCurrentPage(value))
   }
 }
 

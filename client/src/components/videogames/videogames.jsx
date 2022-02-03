@@ -2,21 +2,17 @@ import NavBar from '../navBar/navBar'
 import Filters from '../filters/filters'
 import Pagination from '../pagination/pagination'
 import Videogame from '../videogame/videogame'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { fetchVideogames } from '../../store/actions/index'
 import '../videogames/videogames.css'
 
-const Videogames = ({ videogames, fetchVideogames }) => {
-  const [currentPage, setcurrentPage] = useState(1)
-  const [cardsPerPage] = useState(15)
+const Videogames = ({ videogames, fetchVideogames, currentPage }) => {
 
-  //GET CURRENT CARDS
+  const cardsPerPage = 15
   const indexOfLastCard = currentPage * cardsPerPage
   const indexOfFirstCard = indexOfLastCard - cardsPerPage
   const currentCards = videogames.slice(indexOfFirstCard, indexOfLastCard)
-
-  const paginate = (pageNumber) => setcurrentPage(pageNumber)
 
   useEffect(() => {
     fetchVideogames()
@@ -26,8 +22,8 @@ const Videogames = ({ videogames, fetchVideogames }) => {
     <>
       <NavBar />
       <div className='filters'>
-        <Filters />
-        <Pagination cardsPerPage={cardsPerPage} totalCards={videogames.length} paginate={paginate} actualPage={currentPage} />
+        <Filters actualPage={currentPage} />
+        <Pagination cardsPerPage={cardsPerPage} totalCards={videogames.length} />
       </div>
       <div className='cards'>
         {videogames.length >= 1 &&
@@ -44,7 +40,8 @@ const Videogames = ({ videogames, fetchVideogames }) => {
 
 const mapStateToProps = (state) => {
   return {
-    videogames: state.filteredVideogames
+    videogames: state.filteredVideogames,
+    currentPage: state.currentPage
   }
 }
 
