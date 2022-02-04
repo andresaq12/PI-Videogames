@@ -14,7 +14,7 @@ const validate = (input) => {
   }
   if (!input.rating) {
     errors.rating = 'Rating required'
-  } else if (!/^[0-4](,|\.)[0-9]{2}|5(,|\.)0{2}/.test(input.rating)) {
+  } else if (!/^[0-4](\.)[0-9]{2}|5(\.)0{2}/.test(input.rating)) {
     errors.rating = 'Invalid rating'
   }
   if (!input.image) {
