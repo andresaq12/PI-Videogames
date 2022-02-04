@@ -2,7 +2,7 @@ import { useEffect } from "react"
 import { connect } from "react-redux"
 import { fetchGenres, selectGenre, setCurrentPage } from "../../store/actions"
 
-const GenreFilter = ({ genres, selectGenre, fetchGenres, setCurrentPage }) => {
+const GenreFilter = ({ genres, selectGenre, fetchGenres, setCurrentPage, filterReset }) => {
 
   const handleChange = (e) => {
     const { value } = e.target
@@ -10,13 +10,14 @@ const GenreFilter = ({ genres, selectGenre, fetchGenres, setCurrentPage }) => {
     setCurrentPage(1)
   }
 
+
   useEffect(() => {
     fetchGenres()
   }, [])
 
   return (
     <select name='select' onChange={handleChange}>
-      <option key={0} value={0}>All</option>
+      <option key={0} value={0} >All</option>
       {genres.map(genre =>
         <option key={genre.id} value={genre.id}>{genre.name}</option>
       )}

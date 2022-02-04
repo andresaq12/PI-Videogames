@@ -1,9 +1,20 @@
 .containerFilter {
   color: blanchedalmond;
-  padding: 8px;
+  padding: 3px;
   font-size: 21px;
   display: grid;
   justify-content: space-between;
+}
+
+.containerFilter p {
+  margin: 10px 0;
+}
+
+.addGame {
+  margin: 30px 0;
+  font-size: 20px;
+  cursor: pointer;
+  width: 100%;
 }
 
 select {

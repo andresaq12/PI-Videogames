@@ -2,6 +2,7 @@ import GenreFilter from '../genreFilter/genreFilter'
 import TypeFilter from '../typeFilter/typeFilter'
 import Order from '../order/order'
 import Rating from '../rating/rating'
+import { Link } from 'react-router-dom'
 import '../filters/filters.css'
 
 const Filters = () => {
@@ -16,6 +17,9 @@ const Filters = () => {
       <Order />
       <p>Rating:</p>
       <Rating />
+      <Link to='/game/add'>
+        <button className='addGame'>Add Game</button>
+      </Link>
     </div>
   )
 }
