@@ -28,7 +28,7 @@ const VideogameDetail = () => {
             <h2>Genres:</h2>
             <div className='genresDetail'>
               {
-                videogame.genres.map(item => <p>{item.name}</p>)
+                videogame.genres.map(item => <p key={item.name}>{item.name}</p>)
               }
             </div>
             <h2>Description:</h2>
@@ -41,7 +41,7 @@ const VideogameDetail = () => {
             <h3>Platforms:</h3>
             <div className='platformsDetail'>
               {
-                videogame.platforms.map(item => <p>{item}</p>)
+                videogame.platforms.map(item => <p key={item}>{item}</p>)
               }
             </div>
           </div>
